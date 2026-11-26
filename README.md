@@ -25,4 +25,6 @@ node main.ts             # hands the entry in: copies app/ + screenshots/ to /ou
 
 Layout: `app/` the site (one file per job: `data.js` the figures, `charts.js` the chart drawing, `main.js` the router, `views/` one module per section), `screenshots/` the judged renders listed in `shots.json`, `vendor/makefun-frontend.ts` the kit's dossier library, unchanged.
 
+Design notes: the first load is three files (shell, stylesheet, router) at about 4.3 KB gzipped; each section's view module loads lazily when its link is opened. Type is the visitor's system stack — no webfonts — and every chart is inline SVG with a data-table alternative, so the site works the same on a phone with no signal as on a desktop.
+
 MIT licence — see `LICENSE`. The statistics belong to their publishers; the presentation, text and charts are this repository's own work.

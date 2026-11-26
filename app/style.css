@@ -183,3 +183,9 @@ details.data-table table { margin-top: 8px; }
   .prov-detail { position: static; }
   .panel { padding: 16px 14px 10px; }
 }
+
+/* Motion and selection preferences */
+::selection { background: var(--amber); color: var(--ink); }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
