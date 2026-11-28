@@ -1,5 +1,6 @@
-// Population: the trend, the age pyramid (with a chart/table toggle that
-// really switches), and the key demographic facts.
+// Population: a lead story-stat (the median age), the age pyramid as the
+// page's feature panel (with a chart/table toggle that really switches),
+// the trend, and the key demographic facts as a ruled band.
 import { POPULATION_TREND, PYRAMID, POPULATION_FACTS } from '../data.js';
 import { lineChart, pyramid, dataTable } from '../charts.js';
 
@@ -14,14 +15,12 @@ export function render() {
   return `
   <p class="page-kicker">Section · People</p>
   <h1>Population</h1>
-  <p class="lede">Indonesia counted 270.2 million people in the 2020 census and an estimated 281.6 million by mid-2024. Growth is slowing — about 1.1% a year — and the population is ageing gently: the median Indonesian is 30.5 years old.</p>
+  <p class="lede">Indonesia counted 270.2 million people in the 2020 census and an estimated 281.6 million by mid-2024. Growth is slowing — about 1.1% a year — and the population is ageing gently.</p>
 
-  <section class="panel">
-    <h2>${POPULATION_TREND.title}</h2>
-    ${lineChart({ points: POPULATION_TREND.points, unit: 'million', fmt: (v) => v.toFixed(1) })}
-    ${dataTable(POPULATION_TREND.title, ['Year', 'Population (million)'], POPULATION_TREND.points.map((p) => [p[0], p[1].toFixed(1)]))}
-    <p class="src">${POPULATION_TREND.source}.</p>
-  </section>
+  <div class="lead-stat">
+    <p class="ls-num">30.5 <small>years</small></p>
+    <p class="ls-cap"><b>The median age of an Indonesian.</b> Half the country is younger, half older — and the share is shifting upward, as the narrowing base of the pyramid below shows. Source: BPS / UN estimates, 2024.</p>
+  </div>
 
   <section class="panel">
     <h2>${PYRAMID.title}</h2>
@@ -43,7 +42,14 @@ export function render() {
     <p class="src">${PYRAMID.source}. Shares may not sum to exactly 100 because of rounding.</p>
   </section>
 
-  <section>
+  <section class="panel">
+    <h2>${POPULATION_TREND.title}</h2>
+    ${lineChart({ points: POPULATION_TREND.points, unit: 'million', fmt: (v) => v.toFixed(1) })}
+    ${dataTable(POPULATION_TREND.title, ['Year', 'Population (million)'], POPULATION_TREND.points.map((p) => [p[0], p[1].toFixed(1)]))}
+    <p class="src">${POPULATION_TREND.source}.</p>
+  </section>
+
+  <section class="panel">
     <h2>The population in facts</h2>
     <div class="facts">${facts}</div>
   </section>`;

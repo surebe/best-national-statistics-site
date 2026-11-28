@@ -35,6 +35,7 @@ const SERIES = {
 
 export function render() {
   const jobs = KPI[4];
+  const lastGrowth = GDP_GROWTH.points[GDP_GROWTH.points.length - 1];
   const balance = (TRADE.exports[TRADE.exports.length - 1] - TRADE.imports[TRADE.imports.length - 1]).toFixed(1);
   const econFacts = [
     { value: KPI[2].value, label: `GDP per person, ${KPI[2].note.toLowerCase()}`, src: KPI[2].source },
@@ -52,6 +53,11 @@ export function render() {
   <p class="page-kicker">Section · Output, prices, trade</p>
   <h1>Economy</h1>
   <p class="lede">A US$1.396 trillion economy growing at about 5% a year, with inflation back under 2% and a trade surplus in its fifth year. Switch the chart to see each story.</p>
+
+  <div class="lead-stat">
+    <p class="ls-num">${lastGrowth[1].toFixed(2)}<small>%</small></p>
+    <p class="ls-cap"><b>Real GDP growth in ${lastGrowth[0]}.</b> The economy has grown at about 5% a year since the pandemic contraction of 2020 — among the fastest rates in the G20. Source: ${GDP_GROWTH.source}.</p>
+  </div>
 
   <div class="facts">${facts}</div>
 
