@@ -35,10 +35,25 @@ const SERIES = {
 
 export function render() {
   const jobs = KPI[4];
+  const balance = (TRADE.exports[TRADE.exports.length - 1] - TRADE.imports[TRADE.imports.length - 1]).toFixed(1);
+  const econFacts = [
+    { value: KPI[2].value, label: `GDP per person, ${KPI[2].note.toLowerCase()}`, src: KPI[2].source },
+    { value: `US$${balance} billion`, label: 'Goods trade surplus, 2024', src: TRADE.source },
+    { value: `${GDP_SECTORS.parts[0][1].toFixed(1)}%`, label: 'Manufacturing share of GDP, 2024', src: GDP_SECTORS.source },
+    { value: 'About 145 million', label: 'People in the labour force', src: 'BPS labour force survey (Sakernas), February 2025' },
+  ];
+  const facts = econFacts.map((f) => `
+    <div class="fact">
+      <p class="f-value">${f.value}</p>
+      <p class="f-label">${f.label}</p>
+      <p class="f-src">${f.src}</p>
+    </div>`).join('');
   return `
   <p class="page-kicker">Section · Output, prices, trade</p>
   <h1>Economy</h1>
   <p class="lede">A US$1.396 trillion economy growing at about 5% a year, with inflation back under 2% and a trade surplus in its fifth year. Switch the chart to see each story.</p>
+
+  <div class="facts">${facts}</div>
 
   <section class="panel">
     <div class="controls" role="group" aria-label="Choose a series">

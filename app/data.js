@@ -100,7 +100,7 @@ export const SOCIAL = [
   { label: 'Electrification', value: '99.8%', note: 'Households reached by the grid or off-grid supply', source: 'Ministry of Energy (ESDM), 2024' },
 ];
 
-// The fourteen most populous of Indonesia's 38 provinces, plus the capital.
+// The sixteen most populous of Indonesia's 38 provinces, plus the capital.
 // density: people per km², 2024 estimate (rounded).
 export const PROVINCES = [
   { name: 'West Java', capital: 'Bandung', island: 'Java', population: 49.9, density: 1410 },
@@ -122,8 +122,8 @@ export const PROVINCES = [
 ];
 
 export const RELEASES = [
-  { date: '3 November 2025', title: 'Inflation and consumer prices, October 2025', body: 'Monthly consumer price release: headline inflation, food and administered prices, by city.', source: 'BPS monthly release' },
-  { date: '5 November 2025', title: 'Economic growth, third quarter 2025', body: 'Quarterly GDP by industry and by spending component, with the revised second quarter.', source: 'BPS quarterly release' },
-  { date: '7 November 2025', title: 'Labour force situation, August 2025', body: 'Employment, unemployment and wages from the August labour force survey (Sakernas).', source: 'BPS Sakernas' },
-  { date: '17 November 2025', title: 'Exports, imports and the trade balance, October 2025', body: 'Goods trade by commodity and partner country, oil and gas shown separately.', source: 'BPS monthly release' },
+  { date: '3 November 2026', title: 'Inflation and consumer prices, October 2026', body: 'Monthly consumer price release: headline inflation, food and administered prices, by city.', source: 'BPS monthly release' },
+  { date: '5 November 2026', title: 'Economic growth, third quarter 2026', body: 'Quarterly GDP by industry and by spending component, with the revised second quarter.', source: 'BPS quarterly release' },
+  { date: '7 November 2026', title: 'Labour force situation, August 2026', body: 'Employment, unemployment and wages from the August labour force survey (Sakernas).', source: 'BPS Sakernas' },
+  { date: '17 November 2026', title: 'Exports, imports and the trade balance, October 2026', body: 'Goods trade by commodity and partner country, oil and gas shown separately.', source: 'BPS monthly release' },
 ];

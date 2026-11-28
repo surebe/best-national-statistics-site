@@ -32,6 +32,8 @@ export function lineChart({ points, unit, colour = '#0e6b5c', height = 220, fmt 
   }
   if (min < 0 && max > 0) s += `<line x1="${padL}" y1="${y(0)}" x2="${w - padR}" y2="${y(0)}" class="zero"/>`;
   const path = points.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p[1]).toFixed(1)}`).join(' ');
+  const base = min < 0 && max > 0 ? y(0) : h - padB;
+  s += `<path d="${path} L${x(points.length - 1).toFixed(1)},${base.toFixed(1)} L${x(0).toFixed(1)},${base.toFixed(1)} Z" fill="${colour}" opacity="0.09" stroke="none"/>`;
   s += `<path d="${path}" fill="none" stroke="${colour}" stroke-width="2.5" stroke-linejoin="round"/>`;
   points.forEach((p, i) => {
     s += `<circle cx="${x(i)}" cy="${y(p[1])}" r="4" fill="${colour}"><title>${esc(p[0])}: ${esc(fmt(p[1]))}${unit ? ' ' + esc(unit) : ''}</title></circle>`;
@@ -53,6 +55,10 @@ export function barChart({ points, unit, colour = '#0e6b5c', negColour = '#b3402
   const bw = Math.min(44, slot * 0.62);
   let s = `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(points.map((p) => `${p[0]}: ${fmt(p[1])}${unit ? ' ' + unit : ''}`).join('; '))}">`;
   s += `<line x1="${padL}" y1="${y(0)}" x2="${w - padR}" y2="${y(0)}" class="zero"/>`;
+  for (const f of [0.25, 0.5, 0.75]) {
+    const t = min + (max - min) * f;
+    s += `<line x1="${padL}" y1="${y(t).toFixed(1)}" x2="${w - padR}" y2="${y(t).toFixed(1)}" class="grid"/>`;
+  }
   points.forEach((p, i) => {
     const cx = padL + slot * i + slot / 2;
     const top = y(Math.max(p[1], 0)), bot = y(Math.min(p[1], 0));

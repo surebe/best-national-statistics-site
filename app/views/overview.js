@@ -37,6 +37,11 @@ export function render() {
       <p class="hero-num">281,603,800 <small>people</small></p>
       <p class="hero-note">Mid-year population estimate for 2024, up 1.1% on 2023 — Indonesia is the world's fourth most populous country. Source: BPS population projection, 2024.</p>
     </div>
+    <div class="hero-stats">
+      <p><strong>4th</strong> most populous country in the world</p>
+      <p><strong>38</strong> provinces across five island groups</p>
+      <p><strong>17,000+</strong> named islands</p>
+    </div>
   </section>
 
   <section aria-label="Headline indicators">
